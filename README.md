@@ -1,4 +1,8 @@
-<<<<<<< HEAD
-=======
+<!-- "rewrites": [
+  {
+    "source": "**",
+    "destination": "/index.html"
+  }
+] -->
 
->>>>>>> 1c134f8a6c39f6898c148b750109b52afcd0b90b
+

@@ -7,6 +7,7 @@ import { updateProfile } from 'firebase/auth'
 import { useDispatch } from 'react-redux'
 import { adduser } from '../utils/userSlice'
 import Header from './Header'
+import { SignIn_Bg } from '../utils/Constant'
 
 
 
@@ -74,7 +75,7 @@ const SignIn = () => {
   return (
     <div className="relative">
          <img className='w-full h-dvh absolute -z-50'
-         src="https://cinedz.com/browse/images/misc/home-bg.jpg" alt="" />
+         src={SignIn_Bg} alt="" />
 
 
          <Header />

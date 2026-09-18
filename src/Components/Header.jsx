@@ -17,7 +17,7 @@ console.log(user);
 
 
    useEffect(()=>{
-         onAuthStateChanged(auth, (user) => {
+      const unsubs= onAuthStateChanged(auth, (user) => {
                  if (user) {                           
                    const {uid,displayName,email} = user                  
                    dispatch(adduser({
@@ -32,6 +32,9 @@ console.log(user);
                     navigation('/')
                  }
          })
+
+    return ()=>unsubs()
+
    },[]) 
 
 

@@ -2,10 +2,11 @@ import React, { useRef, useState } from 'react'
 import { validate } from '../utils/validate'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth/cordova'
 import { auth } from '../utils/firebase'
-import { Navigate, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { updateProfile } from 'firebase/auth'
 import { useDispatch } from 'react-redux'
 import { adduser } from '../utils/userSlice'
+import Header from './Header'
 
 
 
@@ -15,7 +16,7 @@ const SignIn = () => {
     const [showPass,setShowPass]=useState(true)
     const [message,setMessage]=useState(null)
 
-    const navigation=useNavigate()
+
     const dispatch=useDispatch()
 
     
@@ -25,15 +26,11 @@ const SignIn = () => {
     
  
     function formValidation(){
-
         const check= signin ? validate(Email.current.value,Password.current.value) : validate(Email.current.value,Password.current.value,Name.current.value) 
         setMessage(check) 
         
         if(check !== null) return
-
-
-        if(!signin){
-              
+        if(!signin){             
               createUserWithEmailAndPassword(auth, Email.current.value,Password.current.value,Name.current.value) 
                 .then((userCredential) => {
                   const user = userCredential.user;
@@ -51,22 +48,15 @@ const SignIn = () => {
                       }).catch((error) => {
                         setMessage(error.message)
                       })
-
                 })
                 .catch((error) => {
-                  const errorCode = error.code;
-                  const errorMessage = error.message;
-                  setMessage(errorMessage)
-                  
+                  setMessage(error.message)                 
                 });
-
-        }
-
+            }
         else{
           signInWithEmailAndPassword(auth, Email.current.value,Password.current.value)
             .then((userCredential) => {
               const user = userCredential.user;
-               navigation('/browser')
             })
             .catch((error) => {
               const errorCode = error.code;
@@ -74,8 +64,7 @@ const SignIn = () => {
               setMessage(errorMessage)
 
             });
-        }
-    
+            }   
       }
 
 
@@ -88,7 +77,7 @@ const SignIn = () => {
          src="https://cinedz.com/browse/images/misc/home-bg.jpg" alt="" />
 
 
-         <div className="py-4 pl-6 pt-2 text-orange-600 text-4xl font-bold bg-gradient-to-b from-black to-black/20 italic">Movie_<span className='text-orange-400'>HUB</span></div>
+         <Header />
 
 
           <form onSubmit={(e)=>e.preventDefault()} className="bg-black/75 mt-24 py-10 px-6 w-fit mx-auto rounded-2xl flex flex-col space-y-5 items-center text-white">

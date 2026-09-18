@@ -1,24 +1,44 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { removeuser } from '../utils/userSlice'
+import { adduser, removeuser } from '../utils/userSlice'
 import { useNavigate } from 'react-router-dom'
 import { auth } from '../utils/firebase'
 import { signOut } from 'firebase/auth'
+import { useEffect } from 'react'
+import { onAuthStateChanged } from 'firebase/auth/cordova'
 
 const Header = () => {
 
 const navigation=useNavigate()
+const dispatch=useDispatch()
 
-    const user=useSelector((store)=>store.user)
-    console.log(user);
+const user=useSelector((store)=>store.user)
+console.log(user);
         
 
 
+   useEffect(()=>{
+         onAuthStateChanged(auth, (user) => {
+                 if (user) {                           
+                   const {uid,displayName,email} = user                  
+                   dispatch(adduser({
+                         uid:uid,
+                         displayName:displayName,
+                         email:email
+                    }))
+                    navigation('/browser')
+   
+                 }else{
+                    dispatch(removeuser())
+                    navigation('/')
+                 }
+         })
+   },[]) 
 
-    const handlelogin=()=>{
+
+    const handlelogOut=()=>{
     signOut(auth).then(() => {
-          navigation('/')
-        }).catch((error) => {
-          navigation('/') 
+        }).catch((error) => {  
+          navigation('/error')    
         })
     }    
 
@@ -26,11 +46,15 @@ const navigation=useNavigate()
     <div className='bg-black/70 text-white flex items-center justify-between p-4'>
         
           <span>Movie_Hub</span>
-          <span className='flex items-center'>
+
+          { user &&
+            <span className='flex items-center'>
                 <button className='bg-gray-400 py-2 px-4 rounded-sm font-bold cursor-pointer'
-                onClick={()=>{handlelogin()}}
+                onClick={()=>{handlelogOut()}}
                 >SignIn</button>
-          </span>
+            </span>
+          }
+          
 
     </div>
   )

@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import SignIn from '../Components/SignIn'
-import Browser from '../Components/Browser'
+import SignIn from './SignIn'
+import Browser from './Browser/Browser.jsx'
 
 const Body = () => {
 

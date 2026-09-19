@@ -1,12 +1,11 @@
-import React, { useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { validate } from '../utils/validate'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth/cordova'
 import { auth } from '../utils/firebase'
-import { useNavigate } from 'react-router-dom'
 import { updateProfile } from 'firebase/auth'
 import { useDispatch } from 'react-redux'
 import { adduser } from '../utils/userSlice'
-import Header from './Header'
+import Header from '../Components/Header'
 import { SignIn_Bg } from '../utils/Constant'
 
 

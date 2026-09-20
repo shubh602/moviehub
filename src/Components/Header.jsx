@@ -12,7 +12,6 @@ const navigation=useNavigate()
 const dispatch=useDispatch()
 
 const user=useSelector((store)=>store.user)
-console.log(user);
         
 
 
@@ -46,13 +45,13 @@ console.log(user);
     }    
 
   return (
-    <div className='bg-black/70 text-white flex items-center justify-between p-4'>
+    <div className='z-50 bg-gradient-to-b from-black/90 to-transparent fixed w-full text-white flex items-center justify-between p-4'>
         
-          <span>Movie_Hub</span>
+          <span className='text-orange-600 text-2xl font-bold'>Movie_Hub</span>
 
           { user &&
             <span className='flex items-center'>
-                <button className='bg-gray-400 py-2 px-4 rounded-sm font-bold cursor-pointer'
+                <button className='bg-orange-600 text-white py-1.5 px-3 rounded-lg hover:opacity-80 font-bold cursor-pointer'
                 onClick={()=>{handlelogOut()}}
                 >SignIn</button>
             </span>

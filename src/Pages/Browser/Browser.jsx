@@ -1,6 +1,7 @@
 import Header from "../../Components/Header"
 import useNewMovies from "../../hooks/useNewMovie"
-
+import Main from "./Main";
+import Secondary from "./secondary";
 
 
 
@@ -10,7 +11,8 @@ const Browser = () => {
 
   return (<div className="">
      <Header />
-    <div className="text-4xl pt-20 text-center">Browser</div>
+     <Main />
+     <Secondary />
     </div>)
 }
 

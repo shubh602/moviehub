@@ -72,7 +72,7 @@ const SignIn = () => {
 
 
   return (
-    <div className="relative">
+    <div className="relative flex justify-center">
          <img className='w-full h-dvh absolute -z-50'
          src={SignIn_Bg} alt="" />
 
@@ -80,7 +80,7 @@ const SignIn = () => {
          <Header />
 
 
-          <form onSubmit={(e)=>e.preventDefault()} className="bg-black/75 mt-24 py-10 px-6 w-fit mx-auto rounded-2xl flex flex-col space-y-5 items-center text-white">
+          <form onSubmit={(e)=>e.preventDefault()} className="bg-black/75 absolute mt-36 py-10 px-6 w-fit rounded-2xl flex flex-col space-y-5 items-center text-white">
                       <h1 className='text-5xl font-bold pb-8'>Sign {signin?"In":"Up"}</h1>
 
                       {!signin &&<input type="text" ref={Name} placeholder='Name' className='w-96 h-10 bg-gray-700 px-2 rounded-lg' name="" id="" />}

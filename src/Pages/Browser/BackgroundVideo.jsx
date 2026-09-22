@@ -8,7 +8,7 @@ const BackgroundVideo = ({id}) => {
   const {key}=video
    
   return (
-    <div className="z-0 overflow-hidden h-dvh w-full">
+    <div className="z-0 overflow-hidden h-[360px] lg:h-dvh w-full">
 
          <iframe 
             className="w-full h-[100%] scale-160 pointer-events-none" 

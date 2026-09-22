@@ -10,7 +10,7 @@ const Main = () => {
 const movieData=useSelector(store => store.newMovie.movie)
 if(!movieData ) return
 
-const movieDetail=movieData[2];
+const movieDetail=movieData[4];
 const {id}=movieDetail;
 
 
@@ -19,8 +19,10 @@ const {id}=movieDetail;
 
 return (
    <div className='w-full h-dvh bg-black text-white'>
+         
           <BackgroundVideo id={id} />
-          <BackgroundText movieDetail={movieDetail} />     
+          <BackgroundText movieDetail={movieDetail} />  
+
    </div>
   )
 }

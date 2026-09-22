@@ -20,7 +20,7 @@ const Card = ({item}) => {
          onMouseLeave={()=>handleHoverShow(false)}
           >
             
-          <img className='w-72 h-72 rounded-lg transition-[width height] duration-500 hover:scale-110'
+          <img className='w-36 h-36 md:w-56 md:h-56 lg:w-72 lg:h-72 rounded-lg transition-[width height] duration-500 hover:scale-110'
            src={`${Card_Img_CDN}${poster_path}`} 
            alt="" />
            

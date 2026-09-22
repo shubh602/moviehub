@@ -8,3 +8,11 @@ export const options = {
 };
 
 export const Card_Img_CDN="https://image.tmdb.org/t/p/w500/"
+
+export const chooseLang=[
+        {lang:"English",val:"en"},
+        {lang:"Hindi",val:"hindi"},
+        {lang:"French",val:"french"},
+        {lang:"Spanish",val:"spanish"},
+        {lang:"Russian",val:"russian"},
+      ]

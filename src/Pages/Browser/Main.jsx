@@ -10,7 +10,7 @@ const Main = () => {
 const movieData=useSelector(store => store.newMovie.movie)
 if(!movieData ) return
 
-const movieDetail=movieData[4];
+const movieDetail=movieData[3];
 const {id}=movieDetail;
 
 

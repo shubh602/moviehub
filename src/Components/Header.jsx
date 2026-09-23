@@ -75,7 +75,7 @@ const lang=useSelector((store)=>store.config.lang)
                           <select onChange={handlelang}
                                   className='relative text-sm text-white bg-gray-600 px-4 py-2 rounded-lg text-start' name="" id="">
                                    
-                                    { chooseLang.map(lang => <option value={lang.val}>{lang.lang}</option> )}
+                                    { chooseLang.map(lang => <option key={lang.val} value={lang.val}>{lang.lang}</option> )}
                                    
                           </select>
                      

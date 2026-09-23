@@ -4,6 +4,7 @@ import Card from './Card'
 const Category = ({title,detail}) => {
     
     if (!detail) return
+    
 
   return (
     <div className='overflow-x-scroll'>
@@ -11,7 +12,7 @@ const Category = ({title,detail}) => {
 
           <div className="flex flex-row space-x-10 overflow-x-scroll scroll-smooth overflow-y-hidden">
                {
-                 detail.map(item =><Card item={item} />)
+                 detail.map(item =><Card key={item.id} item={item} />)
                }    
                    
                    

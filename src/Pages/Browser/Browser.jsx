@@ -39,4 +39,4 @@ const Browser = () => {
           </div>)
 }
 
-export default Browser
+export default Browser  

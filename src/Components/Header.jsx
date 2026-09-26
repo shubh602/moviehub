@@ -31,7 +31,7 @@ const lang=useSelector((store)=>store.config.lang)
                          displayName:displayName,
                          email:email
                     }))
-                    navigation('/browser')
+                    // navigation('/browser')
    
                  }else{
                     dispatch(removeuser())

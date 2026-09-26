@@ -1,13 +1,15 @@
-export const SignIn_Bg="https://cinedz.com/browse/images/misc/home-bg.jpg"
+export const openAI_Key=import.meta.env.VITE_openAI_Key;  
 
-const TMDB_TOKEN='eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5N2E5ZWQyNmZjNDRkYjRiMjUyOWQ5YTBkMDBiZDdlMCIsIm5iZiI6MTc4OTcxODQzMS4wNjA5OTk5LCJzdWIiOiI2YWFjZWY5ZmJmYTQ4M2UxZDE1YmQyNTciLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.UBnTJxF5NdqIjsXz-hzE_rBF14z-nY4ccA8UlxtWKyo';
+export const SignIn_Bg="https://cinedz.com/browse/images/misc/home-bg.jpg"
+export const Card_Img_CDN="https://image.tmdb.org/t/p/w500/"
+
+
 
 export const options = {
   method: 'GET',
-  headers: {accept: 'application/json', Authorization: `Bearer ${TMDB_TOKEN}`}
+  headers: {accept: 'application/json', Authorization: `Bearer ${import.meta.env.VITE_TMDB_TOKEN}`}
 };
 
-export const Card_Img_CDN="https://image.tmdb.org/t/p/w500/"
 
 export const chooseLang=[
         {lang:"English",val:"en"},
@@ -16,3 +18,4 @@ export const chooseLang=[
         {lang:"Spanish",val:"spanish"},
         {lang:"Russian",val:"russian"},
       ]
+

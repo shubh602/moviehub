@@ -1,4 +1,4 @@
-import { Card_Img_CDN } from "../../utils/Constant"
+import { Card_Img_CDN } from "../utils/Constant"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPlay ,faAdd , faChevronCircleDown} from "@fortawesome/free-solid-svg-icons"
 import { useState } from "react"

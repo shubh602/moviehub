@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux'
 import { adduser } from '../utils/userSlice'
 import Header from '../Components/Header'
 import { SignIn_Bg } from '../utils/Constant'
+import { useNavigate } from 'react-router-dom'
 
 
 
@@ -15,6 +16,7 @@ const SignIn = () => {
     const [signin ,setsignin]=useState(true)
     const [showPass,setShowPass]=useState(true)
     const [message,setMessage]=useState(null)
+    const navigation=useNavigate()
 
 
     const dispatch=useDispatch()
@@ -44,7 +46,7 @@ const SignIn = () => {
                                               displayName:displayName,
                                               email:email
                                       }))
-                        navigation('browser')
+                        navigation('/browser')
                       }).catch((error) => {
                         setMessage(error.message)
                       })
@@ -57,6 +59,7 @@ const SignIn = () => {
           signInWithEmailAndPassword(auth, Email.current.value,Password.current.value)
             .then((userCredential) => {
               const user = userCredential.user;
+              navigation('/browser')
             })
             .catch((error) => {
               const errorCode = error.code;

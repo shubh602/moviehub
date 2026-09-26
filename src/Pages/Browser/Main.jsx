@@ -10,7 +10,7 @@ const Main = () => {
 const movieData=useSelector(store => store.newMovie.movie)
 if(!movieData ) return
 
-const movieDetail=movieData[3];
+const movieDetail=movieData[18];
 const {id}=movieDetail;
 
 
@@ -27,4 +27,4 @@ return (
   )
 }
 
-export default Main
+export default Main;

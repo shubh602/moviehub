@@ -22,7 +22,7 @@ const fetching=async()=>{
        fetching()
    },[id])
 
-  return data
+  return data;
 
 }
 

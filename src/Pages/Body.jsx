@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import SignIn from './SignIn'
 import Browser from './Browser/Browser.jsx'
+import Play from './Play/Play.jsx'
 
 const Body = () => {
 
@@ -11,6 +12,9 @@ const Body = () => {
      },{
       path:"/browser",
       element:<Browser />
+     },{
+      path:"/browser/play",
+      element:<Play />
      }
    ])
 

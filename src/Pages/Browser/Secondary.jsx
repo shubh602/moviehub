@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux"
-import Category from "./Category"
+import Category from "../../Components/Category"
 import { langConstant } from "../../utils/langConstant"
 
 
@@ -25,4 +25,4 @@ const lang=useSelector(store => store.config.lang)
   )
 }
 
-export default Secondary  
+export default Secondary;

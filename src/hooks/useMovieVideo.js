@@ -10,7 +10,7 @@ const useMovieVideo=(id)=>{
 const [data,setData]=useState([])
 
 const fetching=async()=>{
-       const api=`https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`
+       const api=`https://api.themoviedb.org/3/movie/${id}/videos`
        
        const data=await fetch(api,options);
        const json=await data.json()
@@ -19,10 +19,10 @@ const fetching=async()=>{
 }  
    
    useEffect(()=>{
-       fetching()
+      id && fetching()
    },[id])
 
-  return data
+  return data;
 
 }
 

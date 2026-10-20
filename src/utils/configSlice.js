@@ -14,5 +14,5 @@ const config=createSlice({
 }) 
 
 
-export const {updatelang}=config.actions
-export default config.reducer
+export const {updatelang}=config.actions;
+export default config.reducer;

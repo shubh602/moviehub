@@ -1,12 +1,13 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { validate } from '../utils/validate'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth/cordova'
 import { auth } from '../utils/firebase'
 import { updateProfile } from 'firebase/auth'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { adduser } from '../utils/userSlice'
 import Header from '../Components/Header'
 import { SignIn_Bg } from '../utils/Constant'
+import { useNavigate } from 'react-router-dom'
 
 
 
@@ -15,6 +16,8 @@ const SignIn = () => {
     const [signin ,setsignin]=useState(true)
     const [showPass,setShowPass]=useState(true)
     const [message,setMessage]=useState(null)
+    const navigation=useNavigate()
+    const UserDetail=useSelector(store=>store.user)
 
 
     const dispatch=useDispatch()
@@ -23,6 +26,10 @@ const SignIn = () => {
     const Name=useRef(null)
     const Email=useRef(null)
     const Password=useRef(null)
+
+    useEffect(()=>{
+       UserDetail && navigation('/browser')
+    },[UserDetail])
     
  
     function formValidation(){
@@ -30,7 +37,9 @@ const SignIn = () => {
         setMessage(check) 
         
         if(check !== null) return
-        if(!signin){             
+        if(!signin){  
+              console.log("sign in");
+                         
               createUserWithEmailAndPassword(auth, Email.current.value,Password.current.value,Name.current.value) 
                 .then((userCredential) => {
                   const user = userCredential.user;
@@ -44,31 +53,44 @@ const SignIn = () => {
                                               displayName:displayName,
                                               email:email
                                       }))
-                        navigation('browser')
+                        navigation('/browser')
                       }).catch((error) => {
+                        console.log("sign UP 1",error);
                         setMessage(error.message)
                       })
                 })
                 .catch((error) => {
+                  console.log("sign UP 2",error);
                   setMessage(error.message)                 
                 });
             }
         else{
+              console.log("sign up");
+
           signInWithEmailAndPassword(auth, Email.current.value,Password.current.value)
             .then((userCredential) => {
               const user = userCredential.user;
+              navigation('/browser')
             })
             .catch((error) => {
               const errorCode = error.code;
               const errorMessage = error.message;
+              console.log("sign UP",error);
               setMessage(errorMessage)
-
             });
             }   
       }
 
 
-   
+   useEffect(()=>{
+    const clearMessage=message && setTimeout(()=>{
+         setMessage(null)
+    },3000)
+
+    return()=>{
+      clearTimeout(clearMessage);
+    }
+   },[message])
 
 
   return (
@@ -84,11 +106,12 @@ const SignIn = () => {
                       <h1 className='text-5xl font-bold pb-8'>Sign {signin?"In":"Up"}</h1>
 
                       {!signin &&<input type="text" ref={Name} placeholder='Name' className='w-52 md:w-72 lg:w-96 h-10 bg-gray-700 px-2 rounded-lg' name="" id="" />}
-
-                      <input type="text" placeholder='Email' ref={Email} className='w-52 md:w-72 lg:w-96 h-10 bg-gray-700 px-2 rounded-lg' name="" id="" />
+                      <span className={`${signin?"block":"hidden"} mr-auto`}>eg : Demo@gmail.com</span>
+                      <input type="text" placeholder='Enter Valid Email' ref={Email} className='w-52 md:w-72 lg:w-96 h-10 bg-gray-700 px-2 rounded-lg' name="" id="" />
                       
                       <span className='flex flex-col space-y-4'>
-                      <input type={showPass?"text":"password"} placeholder='Password' ref={Password} className='w-52 md:w-72 lg:w-96 h-10 bg-gray-700 px-2 rounded-lg' name="" id="" />
+                      <span className={`${signin?"block":"hidden"} mr-auto`}>eg : Demo@111</span>
+                      <input type={showPass?"text":"password"} placeholder='Enter Valid Password' ref={Password} className='w-52 md:w-72 lg:w-96 h-10 bg-gray-700 px-2 rounded-lg' name="" id="" />
                       <input type="checkbox" onChange={()=>setShowPass(!showPass)} className='cursor-pointer mr-auto ml-2'  name="" id="" />
                       </span>
 

@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { adduser, removeuser } from '../utils/userSlice'
 import { updatelang } from '../utils/configSlice'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { auth } from '../utils/firebase'
 import { signOut } from 'firebase/auth'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { onAuthStateChanged } from 'firebase/auth/cordova'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faUser, faRightFromBracket , faXmark, faL, faSearch} from '@fortawesome/free-solid-svg-icons'
@@ -16,9 +16,11 @@ const Header = () => {
 const [flag,setFlag]=useState(false)
 const navigation=useNavigate()
 const dispatch=useDispatch()
+const search=useRef()
 
 const user=useSelector((store)=>store.user)
 const lang=useSelector((store)=>store.config.lang)
+const playlist=useSelector(store=>store.playlist.list)
 
         
 
@@ -31,7 +33,8 @@ const lang=useSelector((store)=>store.config.lang)
                          displayName:displayName,
                          email:email
                     }))
-                    navigation('/browser')
+                    // navigation('/browser')
+
    
                  }else{
                     dispatch(removeuser())
@@ -41,12 +44,19 @@ const lang=useSelector((store)=>store.config.lang)
     return ()=>unsubs()
    },[]) 
 
+   const handleSearch=()=>{
+       const searchInput=search.current.value;
+       navigation(`/browser/search/${searchInput}`)
+       
+   }
+
    const handlelang=(e)=>{
       dispatch(updatelang(e.target.value))
    }
 
     const handlelogOut=()=>{
     signOut(auth).then(() => {
+          navigation('/')
         }).catch((error) => {  
           navigation('/error')    
         })
@@ -72,18 +82,20 @@ const lang=useSelector((store)=>store.config.lang)
 
                   
                           
-                          <select onChange={handlelang}
+                          <select value={lang} onChange={handlelang}
                                   className='relative text-sm text-white bg-gray-600 px-4 py-2 rounded-lg text-start' name="" id="">
                                    
-                                    { chooseLang.map(lang => <option key={lang.val} value={lang.val}>{lang.lang}</option> )}
+                                    { chooseLang.map(langselect => <option key={langselect.val}  value={langselect.val}>{langselect.lang}</option> )}
                                    
                           </select>
                      
 
-                    <span className='hover:text-orange-500 cursor-pointer'>{langConstant[lang].home}</span>
-                    <span className='hover:text-orange-500 cursor-pointer'>{langConstant[lang].about}</span>
-                    <span className='hover:text-orange-500 cursor-pointer'>{langConstant[lang].contact}</span>
-                    <span className='hover:text-orange-500 cursor-pointer'>{langConstant[lang].playlist}</span>
+                    <Link to="/browser"><span className='hover:text-orange-500 cursor-pointer'>{langConstant[lang].home}</span></Link>
+                    <Link to="/browser/about"><span className='hover:text-orange-500 cursor-pointer'>{langConstant[lang].about}</span></Link>
+                    <Link to="/browser/contact"><span className='hover:text-orange-500 cursor-pointer'>{langConstant[lang].contact}</span></Link>
+                    <Link to="/browser/playlist"><span className='hover:text-orange-500 cursor-pointer'>
+                           {langConstant[lang].playlist} <span className='text-lg'>({playlist.length})</span> 
+                    </span></Link>
 
                      
 
@@ -99,8 +111,10 @@ const lang=useSelector((store)=>store.config.lang)
    
 
     <div className='fixed z-20 bg-gradient-to-b from-black/90 to-transparent w-full text-white flex items-center justify-between p-4'>
-        
-          <span className='text-orange-700 text-md lg:text-2xl font-bold'>Movie_Hub</span>
+         
+         <Link to="/browser">
+          <span className='text-orange-700 text-md lg:text-2xl font-bold cursor-pointer'>Movie_Hub</span>
+          </Link>
 
           { user &&
             <span className='flex items-center space-x-3'>             
@@ -108,9 +122,10 @@ const lang=useSelector((store)=>store.config.lang)
                 
                  <input 
                      placeholder={langConstant[lang].search}
+                     ref={search}
                      className='w-32 md:w-80 h-8 rounded-2xl pl-6 backdrop-blur-3xl'
                      type="text" name="" id="" />
-                 <button>
+                 <button onClick={handleSearch}>
                   <FontAwesomeIcon className='relative z-10 cursor-pointer -ml-11 text-xl font-bold' icon={faSearch} />
                  </button>
 

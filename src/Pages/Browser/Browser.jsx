@@ -9,7 +9,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRobot } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import Chatbot from "../Chatbot/Chatbot";
-import { useSelector } from "react-redux";
 
 
 
@@ -17,10 +16,10 @@ const Browser = () => {
 
   const [flag,setflag]=useState(false)
 
-//   useNewMovies();
-//   usePopularMovie()
-//   useTopRatedMovie()
-//   useUpcomingMovie()
+  useNewMovies();
+  usePopularMovie()
+  useTopRatedMovie()
+  useUpcomingMovie()
 
   return (<div className={`${flag && "pointer-events-none h-dvh overflow-y-hidden"} scrollbar-none bg-black text-white`}>
              <Header />

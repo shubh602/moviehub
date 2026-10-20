@@ -13,7 +13,7 @@ const trailer=useSelector(store=>store.newMovie.trailer)
 const dispatch= useDispatch()
 
 const fetching=async()=>{
-       const api=`https://api.themoviedb.org/3/movie/${id}/videos?`
+       const api=`https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`
        
        const data=await fetch(api,options);
        const json=await data.json()

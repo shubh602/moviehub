@@ -65,16 +65,16 @@ const playlist=useSelector(store=>store.playlist.list)
   return (<>
     
 
-     <div className={`${flag?"block":"hidden"} w-fit h-fit fixed mt-13 right-6 px-4 md:px-16 py-4 md:py-12 z-40 flex flex-col backdrop-blur-lg text-md md:text-3xl space-y-6 font-semibold rounded-xl`}>
+     <div className={`${flag?"block":"hidden"} fixed right-3 top-20 z-40 flex max-h-[calc(100dvh-6rem)] w-[min(22rem,calc(100vw-1.5rem))] flex-col gap-4 overflow-y-auto rounded-2xl border border-white/10 bg-zinc-950/95 p-5 text-base font-semibold shadow-2xl shadow-black/50 backdrop-blur-xl sm:right-5 sm:gap-5 sm:p-6 sm:text-lg`}>
                     
-                    <span className='flex items-center space-x-4 md:pb-6'>                       
+                    <span className='flex items-center gap-4 border-b border-white/10 pb-4'>
                           <button 
-                                className='bg-orange-700 text-white text-xl py-1.5 px-2 rounded-full hover:opacity-80 font-bold cursor-pointer'
+                                className='bg-orange-600 text-white text-lg size-10 rounded-full hover:bg-orange-500 font-bold cursor-pointer'
                                 title={user && user.displayName}
                                >
                                 <FontAwesomeIcon icon={faUser} />
                           </button>                       
-                        <span className='flex flex-col text-xs space-y-1'>
+                        <span className='flex min-w-0 flex-col gap-1 text-xs text-white/70'>
                                <span>{user && user.displayName}</span>
                                <span>{user && user.email}</span>
                         </span>
@@ -83,23 +83,23 @@ const playlist=useSelector(store=>store.playlist.list)
                   
                           
                           <select value={lang} onChange={handlelang}
-                                  className='relative text-sm text-white bg-gray-600 px-4 py-2 rounded-lg text-start' name="" id="">
+                                  className='relative w-full text-sm text-white bg-zinc-800 border border-white/10 px-4 py-2.5 rounded-lg text-start focus:outline-none focus:ring-2 focus:ring-orange-500' name="" id="">
                                    
                                     { chooseLang.map(langselect => <option key={langselect.val}  value={langselect.val}>{langselect.lang}</option> )}
                                    
                           </select>
                      
 
-                    <Link to="/browser"><span className='hover:text-orange-500 cursor-pointer'>{langConstant[lang].home}</span></Link>
-                    <Link to="/browser/about"><span className='hover:text-orange-500 cursor-pointer'>{langConstant[lang].about}</span></Link>
-                    <Link to="/browser/contact"><span className='hover:text-orange-500 cursor-pointer'>{langConstant[lang].contact}</span></Link>
-                    <Link to="/browser/playlist"><span className='hover:text-orange-500 cursor-pointer'>
+                    <Link to="/browser"><span className='block rounded-lg px-3 py-2 hover:bg-white/5 hover:text-orange-400 cursor-pointer transition-colors'>{langConstant[lang].home}</span></Link>
+                    <Link to="/browser/about"><span className='block rounded-lg px-3 py-2 hover:bg-white/5 hover:text-orange-400 cursor-pointer transition-colors'>{langConstant[lang].about}</span></Link>
+                    <Link to="/browser/contact"><span className='block rounded-lg px-3 py-2 hover:bg-white/5 hover:text-orange-400 cursor-pointer transition-colors'>{langConstant[lang].contact}</span></Link>
+                    <Link to="/browser/playlist"><span className='block rounded-lg px-3 py-2 hover:bg-white/5 hover:text-orange-400 cursor-pointer transition-colors'>
                            {langConstant[lang].playlist} <span className='text-lg'>({playlist.length})</span> 
                     </span></Link>
 
                      
 
-                    <span className='flex items-center space-x-2 cursor-pointer '
+                    <span className='flex items-center justify-between rounded-lg px-3 py-2 cursor-pointer hover:bg-white/5'
                           onClick={()=>{handlelogOut()}} >
                         <span className='hover:text-orange-500'>{langConstant[lang].logout}</span>
                         <FontAwesomeIcon 
@@ -110,23 +110,23 @@ const playlist=useSelector(store=>store.playlist.list)
      </div>    
    
 
-    <div className='fixed z-20 bg-gradient-to-b from-black/90 to-transparent w-full text-white flex items-center justify-between p-4'>
+    <div className='fixed inset-x-0 top-0 z-20 flex w-full items-center justify-between gap-3 bg-gradient-to-b from-black/95 via-black/70 to-transparent px-4 py-3 text-white backdrop-blur-sm sm:px-6 sm:py-4'>
          
          <Link to="/browser">
-          <span className='text-orange-700 text-md lg:text-2xl font-bold cursor-pointer'>Movie_Hub</span>
+          <span className='text-lg font-extrabold tracking-tight text-orange-500 cursor-pointer sm:text-xl lg:text-2xl'>Movie_Hub</span>
           </Link>
 
           { user &&
-            <span className='flex items-center space-x-3'>             
+            <span className='flex min-w-0 items-center gap-2 sm:gap-3'>
                <span className='text-white font-semibold'>
                 
                  <input 
                      placeholder={langConstant[lang].search}
                      ref={search}
-                     className='w-32 md:w-80 h-8 rounded-2xl pl-6 backdrop-blur-3xl'
+                     className='h-10 w-32 rounded-full border border-white/20 bg-black/40 pl-4 pr-10 text-sm text-white outline-none backdrop-blur-xl placeholder:text-white/60 focus:border-orange-400 focus:ring-2 focus:ring-orange-500/30 sm:w-48 md:w-64 lg:w-80'
                      type="text" name="" id="" />
                  <button onClick={handleSearch}>
-                  <FontAwesomeIcon className='relative z-10 cursor-pointer -ml-11 text-xl font-bold' icon={faSearch} />
+                  <FontAwesomeIcon className='relative z-10 -ml-8 cursor-pointer text-base font-bold text-white/80 transition-colors hover:text-orange-400' icon={faSearch} />
                  </button>
 
                </span>
@@ -138,7 +138,7 @@ const playlist=useSelector(store=>store.playlist.list)
                 <button> 
                   <FontAwesomeIcon 
                           onClick={()=>setFlag(!flag)}
-                          className='text-3xl cursor-pointer hover:opacity-70' 
+                          className='rounded-lg p-2 text-2xl cursor-pointer transition-colors hover:bg-white/10 hover:text-orange-400 sm:text-3xl'
                           icon={!flag?faBars:faXmark} />
                 </button>
 

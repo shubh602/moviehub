@@ -21,14 +21,14 @@ const Browser = () => {
   useTopRatedMovie()
   useUpcomingMovie()
 
-  return (<div className={`${flag && "pointer-events-none h-dvh overflow-y-hidden"} scrollbar-none bg-black text-white`}>
+  return (<div className={`${flag && "pointer-events-none h-dvh overflow-y-hidden"} min-h-dvh bg-black text-white`}>
              <Header />
                      <Chatbot flag={flag} setflag={setflag} />
                 
 
                  {/* Chatbot Icon start */}
                      <span onClick={()=>setflag(true)}
-                        className="fixed z-30 bottom-18 right-18 px-4 py-4 text-3xl rounded-full bg-orange-600 text-white cursor-pointer hover:opacity-70">
+                        className="fixed bottom-4 right-4 z-30 grid size-12 place-items-center rounded-full bg-orange-600 text-xl text-white shadow-lg shadow-orange-950/40 transition-transform hover:scale-105 hover:bg-orange-500 cursor-pointer sm:bottom-6 sm:right-6 sm:size-14 sm:text-2xl">
                         <FontAwesomeIcon icon={faRobot} />
                      </span>
                  {/* Chatbot Icon End */}

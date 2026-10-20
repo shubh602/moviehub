@@ -16,10 +16,10 @@ const Search = () => {
   return (
     <div className="min-h-dvh w-full bg-black text-white">
         <Header />
-        <div className="pt-28 px-5 pb-6">
-           <span className="font-semibold">Search Result for : <span className="underline italic text-blue-400">{name}</span> </span>
+        <div className="mx-auto max-w-screen-2xl px-4 pb-10 pt-24 sm:px-6 sm:pt-28 lg:px-10">
+           <span className="text-base font-semibold text-white/80 sm:text-lg">Search Result for : <span className="italic text-orange-400 underline underline-offset-4">{name}</span> </span>
  
-            <div className="pt-14 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4  2xl:grid-cols-5  space-x-14 space-y-14 items-center">
+            <div className="grid grid-cols-2 justify-items-center gap-4 pt-8 sm:grid-cols-3 sm:gap-6 sm:pt-10 lg:grid-cols-4 xl:grid-cols-5">
 
              {
               search.map(item=>

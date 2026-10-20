@@ -13,11 +13,11 @@ const ChatBox = () => {
     }
     
   return (
-     <div className="overflow-y-scroll flex flex-col space-y-8 h-10/12 px-6 text-black font-semibold">
+     <div className="flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto px-4 pb-4 pt-12 font-semibold text-black sm:gap-5 sm:px-6 sm:pt-14">
                     
                                {
                                 chatbot.map(chat=>
-                                <div className={`${chat.sender=='user'?"ml-auto bg-gray-500 text-white ":"mr-auto bg-white "} max-w-10/12 text-start px-4 py-4 rounded-lg`}>
+                                <div className={`${chat.sender=='user'?"ml-auto bg-orange-600 text-white ":"mr-auto border border-white/10 bg-zinc-100 text-zinc-900 "} max-w-[88%] break-words rounded-2xl px-4 py-3 text-start shadow-md sm:max-w-10/12 sm:px-5 sm:py-4`}>
                                     
                                       {
 
@@ -26,7 +26,7 @@ const ChatBox = () => {
                                       <ul className="space-y-2 px-6 list-disc">
                                         {chat.data.map((list,index)=>
                                         <li onClick={()=>handleSearch(list)} 
-                                           key={index} className="cursor-pointer underline decoration-dashed hover:opacity-70 hover:text-orange-900">
+                                           key={index} className="cursor-pointer underline decoration-dashed underline-offset-4 transition-colors hover:text-orange-500">
                                           {list}
                                         </li>)}
                                       </ul>

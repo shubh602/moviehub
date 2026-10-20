@@ -94,34 +94,34 @@ const SignIn = () => {
 
 
   return (
-    <div className="relative w-full flex justify-center">
-         <img className='w-full h-dvh absolute -z-10'
+    <div className="relative flex min-h-dvh w-full justify-center overflow-hidden bg-black px-4 pb-10 pt-24 sm:items-center sm:py-24">
+         <img className='fixed inset-0 -z-10 h-full w-full object-cover object-center'
          src={SignIn_Bg} alt="" />
 
 
          <Header />
 
 
-          <form onSubmit={(e)=>e.preventDefault()} className="bg-black/75 absolute mt-36 py-10 px-6 w-fit rounded-2xl flex flex-col space-y-5 items-center text-white">
-                      <h1 className='text-5xl font-bold pb-8'>Sign {signin?"In":"Up"}</h1>
+          <form onSubmit={(e)=>e.preventDefault()} className="relative mt-8 flex w-full max-w-md flex-col items-center space-y-5 rounded-2xl border border-white/10 bg-black/80 px-5 py-8 text-white shadow-2xl shadow-black/50 backdrop-blur-xl sm:mt-0 sm:px-8 sm:py-10">
+                      <h1 className='pb-3 text-4xl font-bold tracking-tight sm:pb-5 sm:text-5xl'>Sign {signin?"In":"Up"}</h1>
 
-                      {!signin &&<input type="text" ref={Name} placeholder='Name' className='w-52 md:w-72 lg:w-96 h-10 bg-gray-700 px-2 rounded-lg' name="" id="" />}
-                      <span className={`${signin?"block":"hidden"} mr-auto`}>eg : Demo@gmail.com</span>
-                      <input type="text" placeholder='Enter Valid Email' ref={Email} className='w-52 md:w-72 lg:w-96 h-10 bg-gray-700 px-2 rounded-lg' name="" id="" />
+                      {!signin &&<input type="text" ref={Name} placeholder='Name' className='h-12 w-full rounded-lg border border-white/10 bg-zinc-800 px-4 text-white outline-none transition focus:border-orange-400 focus:ring-2 focus:ring-orange-500/30' name="" id="" />}
+                      <span className={`${signin?"block":"hidden"} mr-auto text-sm text-white/60`}>eg : Demo@gmail.com</span>
+                      <input type="text" placeholder='Enter Valid Email' ref={Email} className='h-12 w-full rounded-lg border border-white/10 bg-zinc-800 px-4 text-white outline-none transition placeholder:text-white/50 focus:border-orange-400 focus:ring-2 focus:ring-orange-500/30' name="" id="" />
                       
-                      <span className='flex flex-col space-y-4'>
-                      <span className={`${signin?"block":"hidden"} mr-auto`}>eg : Demo@111</span>
-                      <input type={showPass?"text":"password"} placeholder='Enter Valid Password' ref={Password} className='w-52 md:w-72 lg:w-96 h-10 bg-gray-700 px-2 rounded-lg' name="" id="" />
-                      <input type="checkbox" onChange={()=>setShowPass(!showPass)} className='cursor-pointer mr-auto ml-2'  name="" id="" />
+                      <span className='flex w-full flex-col gap-3'>
+                      <span className={`${signin?"block":"hidden"} mr-auto text-sm text-white/60`}>eg : Demo@111</span>
+                      <input type={showPass?"text":"password"} placeholder='Enter Valid Password' ref={Password} className='h-12 w-full rounded-lg border border-white/10 bg-zinc-800 px-4 text-white outline-none transition placeholder:text-white/50 focus:border-orange-400 focus:ring-2 focus:ring-orange-500/30' name="" id="" />
+                      <input type="checkbox" onChange={()=>setShowPass(!showPass)} className='ml-1 size-4 cursor-pointer accent-orange-500'  name="" id="" />
                       </span>
 
-                      <span className='text-red-500 mr-auto font-semibold'>{message}</span>
+                      <span className='mr-auto max-w-full break-words text-sm font-semibold text-red-400'>{message}</span>
 
-                      <button className='bg-orange-600 hover:bg-orange-700 w-full text-xl py-2 font-semibold rounded-md cursor-pointer'
+                      <button className='w-full rounded-lg bg-orange-600 py-3 text-lg font-semibold text-white shadow-lg shadow-orange-950/30 transition-colors hover:bg-orange-500 cursor-pointer'
                        onClick={formValidation}
                       >Sign {signin?"In":"Up"}</button>
 
-                      <span className='mr-auto font-semibold cursor-pointer hover:underline'
+                      <span className='mr-auto cursor-pointer text-sm font-semibold text-white/75 transition-colors hover:text-orange-300 hover:underline'
                       onClick={()=>setsignin(!signin)}>
                         Create new Account.
                      </span>

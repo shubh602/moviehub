@@ -1,4 +1,4 @@
-// export const Groq_Key=import.meta.env.VITE_groq_key;  
+export const Groq_Key=import.meta.env.VITE_groq_key;  
 
 
 

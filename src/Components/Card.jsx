@@ -31,33 +31,33 @@ const Card = ({item,playlist=false}) => {
 
 
   return (
-    <div className='relative w-fit flex flex-col shrink-0' 
+    <div className='group relative flex w-32 shrink-0 flex-col snap-start overflow-hidden rounded-xl bg-zinc-900 shadow-lg shadow-black/20 sm:w-40 md:w-48 lg:w-56 xl:w-64'
          onMouseOver={()=>handleHoverShow(true)} 
          onMouseOut={()=>handleHoverShow(false)}
           >
             
-          <img className='w-36 h-36 md:w-56 md:h-56 lg:w-72 lg:h-72 rounded-lg transition-[width height] duration-500 hover:scale-110'
+          <img className='aspect-[2/3] h-auto w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]'
            src={`${Card_Img_CDN}${poster_path}`} 
            alt="" />
            
-           <div className={`${!hoverShow?"hidden":"block"} -mt-8 flex items-center justify-between text-xl relative z-10 text-gray-400`}>
+           <div className={`${!hoverShow?"flex sm:hidden":"flex"} absolute inset-x-2 bottom-2 z-10 items-center justify-between rounded-xl border border-white/10 bg-black/75 p-2 text-lg text-white shadow-lg backdrop-blur-md sm:inset-x-3 sm:bottom-3 sm:p-2.5 sm:text-xl`}>
 
               <button 
               title="Play"
               onClick={()=>handlePlay(item)}
-              className="border rounded-full px-0.5 hover:opacity-70 cursor-pointer">
+              className="grid size-10 place-items-center rounded-full border border-white/30 bg-white/10 transition-colors hover:bg-orange-600 cursor-pointer">
                 <FontAwesomeIcon icon={faPlay} />
               </button>
              
              <span className="flex items-center space-x-1.5">
                  <button title="Add To Playlist" onClick={()=>handlePlaylist(item)} 
-                        className="border rounded-full px-0.5 hover:opacity-70 cursor-pointer">
+                        className="grid size-10 place-items-center rounded-full border border-white/30 bg-white/10 transition-colors hover:bg-orange-600 cursor-pointer">
                          <FontAwesomeIcon icon={playlist?faMinus:faAdd} />
                   </button>
 
                  <button title="Information"
                      onClick={()=>setFlag(true)}
-                     className="text-3xl hover:opacity-70 cursor-pointer">
+                     className="grid size-10 place-items-center rounded-full text-4xl transition-colors hover:bg-white/10 hover:text-orange-400 cursor-pointer">
                      <FontAwesomeIcon icon={faChevronCircleDown} />
                  </button>  
              </span>

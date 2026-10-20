@@ -18,7 +18,7 @@ const {id}=movieDetail;
 
 
 return (
-   <div className='w-full h-dvh bg-black text-white'>
+   <div className='relative isolate h-[min(86svh,52rem)] min-h-[34rem] w-full bg-black text-white lg:h-dvh lg:min-h-[42rem]'>
          
           <BackgroundVideo id={id} />
           <BackgroundText movieDetail={movieDetail} />  

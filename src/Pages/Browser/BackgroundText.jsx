@@ -19,22 +19,22 @@ const BackgroundText = ({movieDetail}) => {
 
 
   return (
-    <div className="w-7/12 md:w-4/12 h-full absolute pt-28 md:pt-36 xl:pt-60 top-0 pl-6 lg:pl-8 text-white flex flex-col font-semibold bg-gradient-to-r from-black/60 to-transparent">
-              <span className='text-xl md:text-2xl lg:text-6xl font-bold pb-2 md:pb-7 xl:pb-12'>{original_title}</span>
+    <div className="absolute left-0 top-0 flex h-full w-11/12 flex-col bg-gradient-to-r from-black/90 via-black/65 to-transparent px-5 pt-24 font-semibold text-white sm:w-8/12 sm:px-8 sm:pt-32 lg:w-6/12 lg:px-10 lg:pt-44 xl:pt-52">
+              <span className='max-w-3xl break-words pb-3 text-2xl font-bold leading-tight sm:pb-5 sm:text-4xl lg:pb-8 lg:text-6xl'>{original_title}</span>
               
-              <span className='text-[7px] lg:text-xs'>{overview}</span>
+              <span className='line-clamp-4 max-w-2xl text-xs leading-relaxed text-white/85 sm:line-clamp-5 sm:text-sm lg:text-base'>{overview}</span>
 
-              <div className="flex pt-6 items-center space-x-10 text-md lg:text-2xl">
+              <div className="flex flex-wrap items-center gap-3 pt-5 text-sm sm:gap-4 sm:pt-7 sm:text-base lg:gap-5 lg:text-lg">
                 
                    <button 
                    onClick={()=>handlePlay(id)}
-                   className='bg-orange-600 text-white flex items-center space-x-2 px-4 lg:px-8 py-1 lg:py-3 rounded-xl cursor-pointer hover:opacity-80'>
+                   className='flex min-h-11 items-center gap-2 rounded-xl bg-orange-600 px-4 py-2 text-white shadow-lg shadow-orange-950/30 transition-colors hover:bg-orange-500 sm:px-6 lg:px-7'>
                           <FontAwesomeIcon icon={faPlay} /><span> {langConstant[lang].play} </span>  
                    </button>
 
                    <button 
                     onClick={()=>setFlag(true)}
-                   className='bg-white text-orange-600 flex items-center space-x-2 px-4 lg:px-8 py-1 lg:py-3 rounded-xl cursor-pointer hover:opacity-80'>
+                   className='flex min-h-11 items-center gap-2 rounded-xl bg-white px-4 py-2 text-orange-700 shadow-lg transition-colors hover:bg-orange-50 sm:px-6 lg:px-7'>
                            <FontAwesomeIcon icon={faCircleInfo} /><span>  {langConstant[lang].info} </span> 
                    </button>
               </div>

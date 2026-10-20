@@ -73,12 +73,12 @@ const handlechatcall=async()=>{
     }
 
   return (
-     <div className="w-full fixed bottom-2 flex items-center justify-center p-4 text-black">
+     <div className="absolute inset-x-0 bottom-0 flex items-center justify-center gap-2 border-t border-white/10 bg-zinc-950/95 p-3 text-black backdrop-blur sm:gap-3 sm:p-4">
 
                                     <input placeholder={langConstant[lang].gptplaceholder} ref={InputText}
-                                            type="text" className="bg-white w-8/12 h-10 rounded-4xl pl-4 pr-10" name="" id="" />
+                                            type="text" className="h-11 min-w-0 flex-1 rounded-full border border-zinc-300 bg-white px-4 pr-12 text-sm outline-none transition focus:border-orange-500 focus:ring-2 focus:ring-orange-500/30 sm:text-base" name="" id="" />
 
-                                    <button className="-ml-12 px-4 py-2 cursor-pointer bg-black text-white font-bold rounded-r-3xl hover:opacity-90"
+                                    <button className="-ml-14 grid size-10 shrink-0 place-items-center rounded-full bg-orange-600 text-white transition-colors hover:bg-orange-500 cursor-pointer"
                                              onClick={handlechatcall}
                                     >
                                         <FontAwesomeIcon icon={faSearch} />

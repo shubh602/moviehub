@@ -11,25 +11,25 @@ const About = () => {
     <div className="bg-black text-white min-h-dvh pb-10">
         <Header />
         
-        <img className="absolute z-0 w-full h-96 bg-cover"  
+        <img className="absolute inset-x-0 top-0 z-0 h-72 w-full object-cover object-center opacity-75 sm:h-96"
              src={About_Image} alt="" />
 
-       <div className="relative flex flex-col z-10 pt-52 mx-10">
-            <div className="text-gray-200 flex flex-col md:flex-row justify-center items-end font-bold pb-20">
-                <span className="text-6xl text-center lg:text-9xl">{aboutConstant[lang].logo}</span>
-                <span className="text-gray-100 text-[6px] pt-4  lg:text-xs font-extrabold">{aboutConstant[lang].quote}</span>
+       <div className="relative z-10 mx-auto flex max-w-6xl flex-col px-4 pb-8 pt-40 sm:px-8 sm:pt-52">
+            <div className="flex flex-col items-center justify-center gap-2 pb-12 text-center font-bold text-gray-200 sm:pb-16 md:flex-row md:items-end md:gap-4">
+                <span className="text-5xl sm:text-7xl lg:text-8xl">{aboutConstant[lang].logo}</span>
+                <span className="max-w-xl pt-2 text-xs font-extrabold text-gray-100 sm:text-sm">{aboutConstant[lang].quote}</span>
             </div>
 
-            <div className="pt-12">
-                <span className="font-bold text-3xl">{aboutConstant[lang].welcome}</span> <br /><br />
+            <div className="rounded-2xl border border-white/10 bg-black/55 p-5 text-sm leading-relaxed text-white/80 shadow-xl backdrop-blur-sm sm:p-8 sm:text-base">
+                <span className="font-bold text-2xl text-white sm:text-3xl">{aboutConstant[lang].welcome}</span> <br /><br />
 
                 {aboutConstant[lang].content1}
                 <br /> 
                 {aboutConstant[lang].content2}
             </div>
          
-            <div className="pt-10 flex flex-col">
-                        <span className="font-extrabold text-xl pb-2">{aboutConstant[lang].mission}</span>
+            <div className="flex flex-col pt-8">
+                        <span className="pb-2 text-lg font-extrabold text-orange-400 sm:text-xl">{aboutConstant[lang].mission}</span>
                         <span>{aboutConstant[lang].missionContent}</span>
             </div>
 

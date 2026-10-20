@@ -11,7 +11,7 @@ const lang=useSelector(store => store.config.lang)
 
  
   return (
-    <div className="-mt-80 lg:-mt-18 pb-20 pl-6 flex flex-col space-y-10 lg:space-y-20 z-10 relative">
+    <div className="relative z-10 -mt-24 flex flex-col gap-8 pb-12 sm:-mt-32 sm:gap-12 sm:pb-16 lg:-mt-20 lg:gap-16 lg:pb-20">
        
          <Category title={langConstant[lang].nowplaying} detail={Movie.movie} />
 

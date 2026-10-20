@@ -12,10 +12,10 @@ const PlayList = () => {
   return (
     <div className="bg-black text-white min-h-dvh">
         <Header />
-        <div className="pt-32 px-6">
-         <span className="text-5xl font-bold">{langConstant[lang].playlist}</span>
+        <div className="mx-auto max-w-screen-2xl px-4 pb-10 pt-24 sm:px-6 sm:pt-28 lg:px-10">
+         <span className="text-3xl font-bold tracking-tight sm:text-4xl">{langConstant[lang].playlist}</span>
 
-           <div className="mx-14 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4  2xl:grid-cols-5 space-y-10 space-x-14 pt-10">
+           <div className="grid grid-cols-2 justify-items-center gap-4 pt-7 sm:grid-cols-3 sm:gap-6 sm:pt-9 lg:grid-cols-4 xl:grid-cols-5">
                   {
                     playlist && playlist.map(item=><Card key={item.id} playlist={true} item={item} />)
                   }
